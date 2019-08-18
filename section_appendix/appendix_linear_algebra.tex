@@ -1,0 +1,303 @@
+\section*{Linear Algebra}
+\subsection*{Vectors}
+\subsubsection*{Inner Product}
+Given $a, b \in \mathbb{R}^n$,
+$ a = \begin{bmatrix}
+a_1 \\
+a_2  \\
+\vdots \\
+a_n
+\end{bmatrix}$ and
+$ b = \begin{bmatrix}
+b_1 \\
+b_2 \\
+\vdots \\
+b_n
+\end{bmatrix}$, the \emph{inner product} (also called dot product) of $a$ and $b$ is
+\begin{align*}
+a \cdot b = a^T b = a_1 b_1 + a_2 b_2 + \cdots + a_n b_n = \sum_{i=1}^n a_i b_i,
+\end{align*}
+where $a^T$ denotes the transpose. The inner product $a \cdot b$ can also be written as $<a, b>$ or $(a, b)$.
+
+The properties of inner product are as follows:
+\begin{itemize}
+%  \item $<a,b> = <b,a>$;
+%  \item $<k a , b> = < a , k b> =k <a, b>$;
+%  \item $<a+b, c> = <a, c> + <b,c>$;
+%  \item $<a, a> \geq 0, \forall a \neq 0$, and $<a, a> = 0 \iff a = 0$,
+  \item $a \cdot b = b \cdot a$;
+  \item $(k a) \cdot b  =  a \cdot (k b) =k (a \cdot b)$;
+  \item $(a+b) \cdot c = a \cdot c  + b \cdot c $;
+  \item $a \cdot a \geq 0, \forall a \neq 0$, and $ a \cdot a = 0 \iff a = 0$,
+\end{itemize}
+where $a, b, c \in \mathbb{R}^n$, $k \in \mathbb{R}$.
+
+
+\subsubsection*{Outer Product}
+Given $a,b \in \mathbb{R}^3$,
+$ a = \begin{bmatrix}
+a_1 \\
+a_2  \\
+a_3
+\end{bmatrix}$ and
+$ b = \begin{bmatrix}
+b_1 \\
+b_2 \\
+b_3
+\end{bmatrix}$, the \emph{outer product} (also called cross product) of $a$ and $b$ is
+\begin{align*}
+a \times b = \begin{bmatrix}
+a_2 b_3 - a_3 b_2\\
+a_3 b_1 - a_1 b_3\\
+a_1 b_2 - a_2 b_1
+\end{bmatrix}.
+\end{align*}
+Define
+\begin{align*}
+\hat a =
+\begin{bmatrix}
+ 0 & -a_3 & a_2 \\
+a_3 & 0 & -a_1 \\
+ -a_2 & a_1 & 0
+ \end{bmatrix},
+\end{align*}
+then $a \times b = \hat a b$.
+
+The properties of outer product are as follows:
+\begin{itemize}
+  \item $a \times b = - b \times a$;
+  \item $(ka) \times b = a \times (kb) = k (a \times b)$;
+  \item $(a+b) \times c = a \times c + b \times c$;
+  \item $a \times (b \times c) + b \times (c \times a) + c \times (a \times b) = 0 $;
+  \item $(a \times b) \times c = b ( a \cdot c ) - a ( b \cdot c)$, $a \times (b \times c) = b ( a \cdot c) - c (a \cdot b)$,
+\end{itemize}
+where $a, b, c \in \mathbb{R}^3$, $k \in \mathbb{R}$.
+
+\subsubsection*{Vector Norm}
+
+Given $a\in \mathbb{R}^n$, the \emph{norm} of $a$ is
+\begin{align*}
+ \| a \| = \sqrt{ <a, a>}  = \sqrt{ a^T a }.
+\end{align*}
+If $\| a \| = 1$, then $a$ is called an unit vector. $\forall a \neq 0$, $\frac{a}{\| a \|}$ is an unit vector.
+
+
+The properties of norm are as follows:
+\begin{itemize}
+  \item $ \| a \| \geq 0, \forall a \neq 0$, and $\| a \| = 0 \iff a = 0$;
+  \item $ \| k a \| = |k| \| a \|$;
+  \item $ \| a + b \| \leq \| a \| + \| b \|$, and $\| a + b \| = \| a \| + \| b \| \iff a $ and $b$ are linearly dependent,
+\end{itemize}
+where $a, b\in \mathbb{R}^3$, $k \in \mathbb{R}$.
+
+In addition, 
+\begin{align*}
+a \cdot b & = \| a \|  \| b \| \cos \theta,  \\
+\| a \times b \| & =  \| a \|  \| b \| \sin \theta,
+\end{align*}
+where $\theta$ is the angle between the $a$ and $b$.
+
+\subsubsection*{Orthogonal Vectors}
+Given $a, b\in \mathbb{R}^n$, if $a \cdot b = 0$, then $a$ and $b$ are called orthogonal, and denoted as $ a \perp b$.
+
+
+\subsection*{Matrix Norms}
+
+\subsubsection*{Matrix Norms Induced by Vector Norms}
+Given a matrix $A \in \mathbb{R}^{m \times n}$, the induced norm or operator norm is defined as
+\begin{align*}
+\| A \| & = \sup \{ \| Ax\| : x \in \mathbb{R}^n, \|x\| = 1  \}   \\
+	& = \sup \{ \frac{\| Ax\|}{\| x \|} : x \in \mathbb{R}^n, x \neq 0  \}.
+\end{align*}
+
+Particularly,
+\begin{align*}
+\| A \|_1 & = \max_{1 \leq j \leq n} \sum_{i=1}^{m} |a_{ij}|,   \\
+\| A \|_{\infty} & = \max_{1 \leq i \leq m} \sum_{j=1}^{n} |a_{ij}|,   \\
+\| A \|_2 & = \sigma_{\max} (A),
+\end{align*}
+where $\sigma_{\max} (A)$ represents the largest singular value of matrix $A$.
+
+\subsubsection*{Entry-wise Matrix Norms}
+Given a matrix $A \in \mathbb{R}^{m \times n}$, the entry-wise matrix norms treat
+the $m \times n$ matrix as a vector of size $m \cdot n$ and define the norms for $p \geq 1$ as
+\begin{align*}
+\| A \|_p = \left( \sum_{i = 1}^m \sum_{j = 1}^n  | a_{ij}|^p \right)^{\frac{1}{p}}.
+\end{align*}
+
+Particularly, the special case $p = 2$ yields the \emph{Frobenius norm} or the \emph{Hilbert-Schmidt norm},
+\begin{align*}
+\| A \|_F = \sqrt{ \sum_{i = 1}^m \sum_{j = 1}^n  | a_{ij}|^2 } = \sqrt{ trace(A^T A) } = \sqrt{ \sum_{i = 1}^{ \min\{m,n\} } \sigma_i^2 (A) },
+\end{align*}
+where  $ \sigma _{i}(A) $  are the singular values of $A$,  the $trace(\cdot)$ function returns the sum of diagonal entries of a square matrix.
+
+The special case $p = \infty$ yields the max norm
+\begin{align*}
+\|A\|_{\max} = \max_{ij} |a_{ij}|.
+\end{align*}
+
+
+\subsubsection*{Norm Equivalence}
+
+Any two matrix norms are equivalence. That is, $\forall A \in \mathbb{R}^{m \times n} $, $\exists r, s \in \mathbb{R}_{>0}$, s.t.,
+\begin{align*}
+ r \|A \|_\alpha \leq  \|A \|_\beta \leq s \|A \|_\alpha,
+\end{align*}
+where $\|\cdot \|_{\alpha }$ and $ \|\cdot\|_{\beta}$, $\alpha, \beta \in \mathbb{N}$ are two matrix norms.
+
+For a matrix $A \in \mathbb{R}^{m \times n}$ of rank $r$,
+\begin{align*}
+& \|A\|_2  \leq \| A\|_F \leq \sqrt{r} \| A\|_2, \\
+& \|A\|_{\max} \leq \|A\|_2 \leq \sqrt{mn}\|A\|_{\max}, \\
+&  \frac {1}{\sqrt {n}} \|A\|_{\infty } \leq \|A\|_2 \leq \sqrt {m} \|A\|_{\infty }, \\
+&  \frac {1}{\sqrt {m}} \|A\|_1 \leq \|A\|_2 \leq \sqrt {n} \|A\|_1, \\
+& \|A\|_2  \leq  \sqrt {\|A\|_1 \|A\|_{\infty }}.
+\end{align*}
+
+
+\subsubsection*{Proof of Propositions}
+\begin{proposition}[Induced 2 Norm - Singular Value]
+Given a matrix $A \in \mathbb{R}^{m \times n}$,
+\[
+\| A \|_2 =   \sigma_{\max} (A),
+\]
+where $\sigma_{\max} (A)$ represents the largest singular value of matrix $A$.
+\end{proposition}
+
+\begin{proof}\cite{doan2013}
+Let $B = A^T A$. Since the matrix fulfills $B^* = B$, where where $B^*$ denotes the conjugate transpose, then $B$ is a Hermitian matrix.
+
+%As a linear transformation of Euclidean vector space $E$, $B$ is Hermitian iff there exists an orthogonal basis of $E$ consisting of all the eigenvectors of $B$.
+
+$B$ is symmetric and non-negative definite, that is $B^T = B$, $x^T B x \geq 0$ for all $x\neq 0$.
+%
+All the eigenvalues of $B$ are real and non-negative.
+%
+Let $\lambda_1, \dots , \lambda_n$ be the eigenvalues of $B$ and $\{e_1,...e_n\}$ be the corresponding eigenvectors.
+%
+The eigenvectors are orthogonal and forms an orthogonal basis of the Euclidean space.
+%
+Denote $\lambda_{\max} = \max \{ \lambda_1 , \dots , \lambda_n \}$, and  $e_{max}$ is the eigen vector corresponding to the eigen value $\lambda_{\max}$.
+
+Let $x=\alpha_1 e_1+ \dots + \alpha_n e_n$, $\alpha_i \in \mathbb{R}$, for $i = 1, 2, \dots, n$.
+%
+Then $\| x \|_2= \sqrt {\sum_{i = 1}^n \alpha_i^2 }$,
+%
+and $B x = B (\sum_{i = 1}^n \alpha_i e_i) = \sum_{i = 1}^n \alpha_i B e_i  =  \sum_{i = 1}^n \lambda_i \alpha_i  e_i $.
+%
+Therefore,
+\begin{align*}
+\| Ax \|_2^2 & =  <Ax,Ax>
+ = <x,A^T Ax>
+=  <x, Bx>  \\
+& =  < \sum_{i = 1}^n \alpha_i e_i ,   \sum_{i = 1}^n \lambda_i \alpha_i  e_i  >
+ =  \sum_{i = 1}^n \lambda_i \alpha_i ^2
+ \leq     \lambda_{\max}  \sum_{i = 1}^n \alpha_i ^2
+ \leq     \lambda_{\max}    \| x \|_2^2 .
+\end{align*}
+%
+Since $\| A \|_2 =\sup \{\frac{\|Ax\|_2}{\|x\|_2}: x \neq 0\}$,
+\begin{align*}
+\| A \|_2^2 \leq  \lambda_{\max} .
+\end{align*}
+
+Take $x$ = $e_{\max}$, then
+\begin{align*}
+\| A \|_2^2  \geq \| A e_{\max} \|_2^2
+= <e_{\max}, B e_{\max}>
+= <e_{\max}, \lambda_{\max} e_{\max}>
+=  \lambda_{\max}
+\end{align*}
+
+Therefore,
+$\| A \|_2^2 =  \lambda_{\max}$ and
+$\| A \|_2 = \sqrt{ \lambda_{\max} } = \sigma_{\max} (A)$.
+\end{proof}
+
+
+\paragraph{Trace -- F Norm}
+
+\
+
+Given two matrics  $A, B \in \mathbb{R}^{n \times n}$,
+\begin{align}
+trace(AB) = trace(BA).
+\end{align}
+\begin{proof}
+Let $A = (a_{ij})$, $B = (b_{ij})$, then
+\[
+(AB)_{ii} = \sum_{j = 1}^n a_{i j} b_{j i},  \quad   (BA)_{j j} = \sum_{i = 1}^n  b_{j i} a_{i j}.
+\]
+\begin{align*}
+trace(AB) = \sum_{i = 1}^n \sum_{j = 1}^n a_{i j} b_{j i}
+= \sum_{j = 1}^n  \sum_{i = 1}^n a_{i j} b_{j i}
+= \sum_{j = 1}^n  \sum_{i = 1}^n  b_{j i}  a_{i j}
+= trace(BA).
+\end{align*}
+\end{proof}
+
+
+%Given $A \in \mathbb{R}^{m \times n}$,
+\[
+%\| A \|_F =  \sqrt{ \sum_{i = 1}^{\min \{m ,n\}} \sigma_i^2 (A) },
+\| A \|_F =  \sqrt{ \sum_{i = 1}^n \sigma_i^2 (A) },
+\]
+where  $ \sigma _{i}(A) $  are the singular values of $A$.
+
+
+\begin{proof}\cite{mukhopadhyay2015}
+
+%Let $ A = U \Sigma V^T $, $U \in \mathbb{m \times m}$, $\Sigma \in \mathbb{m \times n}$, $V \in \mathbb{}$
+
+$ \sum_{i = 1}^n \sigma_i^2 (A)  = trace(\Sigma^T \Sigma)$, where $ A = U \Sigma V^T $.
+
+\begin{align*}
+\| A \|_F^2 &= trace(A^T A)
+ = trace( V \Sigma^T U^T U \Sigma V^T )
+ = trace( V \Sigma^T  \Sigma V^T ) \\
+& = trace( \Sigma^T  \Sigma V^T V  )
+ = trace( \Sigma^T  \Sigma  )
+ = \sum_{i = 1}^n \sigma_i^2 (A).
+\end{align*}
+
+Therefore,
+\[
+%\| A \|_F =  \sqrt{ \sum_{i = 1}^{\min \{m ,n\}} \sigma_i^2 (A) },
+\| A \|_F =  \sqrt{ \sum_{i = 1}^n \sigma_i^2 (A) },
+\]
+
+\end{proof}
+
+
+
+
+\subsubsection{Eigen Value Decomposition}
+
+\subsubsection{Singluar Value Decomposition}
+
+\subsubsection{Matrix Exponential}
+Given a matrix $A \in \mathbb{R}^{n \times n}$, the exponential of $A$ is
+\begin{align}
+e^A = I + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots .
+\end{align}
+
+Given a matrix $\hat \omega \in so(3)$ with $\| \omega \| =1$, and a real number $\theta \in \mathbb{R}$, the exponential of ${\hat \omega \theta} $ is
+\begin{align}
+e^{\hat \omega \theta} = I +  \theta {\hat \omega} + \frac{ \theta^2}{2!} {\hat \omega}^2 + \frac{\theta^3}{3!} {\hat \omega}^3 + \cdots .
+\end{align}
+Furthermore,
+\begin{align}
+e^{\hat \omega \theta} = I + (\theta -  \frac{\theta^3}{3!} +  \frac{\theta^5}{5!} + \cdots ) {\hat \omega} +
+(\frac{\theta^2}{2!} -  \frac{\theta^4}{4!} + \frac{\theta^6}{6!} - \cdots ) {\hat \omega}^2.
+\end{align}
+Hence, there is the {\it  Rodrigues' formula \cite{murray1994}}
+\begin{align}
+e^{\hat \omega \theta} = I + {\hat \omega}\sin \theta + {\hat \omega}^2 (1- \cos \theta).
+\end{align}
+
+
+
+
+
+%\bibliographystyle{ieeetr}
+%\bibliography{./bib/robotics}

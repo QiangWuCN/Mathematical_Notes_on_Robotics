@@ -1,5 +1,4 @@
-
-\documentclass[11pt]{book} % use larger type; default would be 10pt
+\documentclass[10pt]{book} % use larger type; default would be 10pt
 
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 
@@ -19,7 +18,7 @@
 \usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
-\usepackage{amssymb, amsmath}
+\usepackage{amssymb, amsmath, amsthm}
 
 %%% HEADERS & FOOTERS
 \usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
@@ -39,6 +38,20 @@
 \renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
 \renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
 
+\theoremstyle{plain}% Theorem-like structures
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+
 %%% END Article customizations
 
 
@@ -50,5 +63,5 @@
 \maketitle
 
 \include{section_appendix/appendix}
-
+\include{section_appendix/appendix_linear_algebra}
 \end{document}
